@@ -2,7 +2,7 @@
     <div class="container mx-auto p-4">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-xl font-bold">Movie List</h2>
-        <button @click="showAddMovieForm = true" class="btn btn-primary">Add Movie</button>
+        <button @click="showAddMovieForm = true" class="bg-gradient-to-r from-green-400 to-blue-500 text-white py-2 px-4 rounded-full">Add Movie</button>
       </div>
       <div class="flex mb-4">
         <input
@@ -30,7 +30,7 @@
   const displayedMovies = ref([]);
   const showAddMovieForm = ref(false);
   
-  onMounted(async () => {
+  onMounted(() => {
     const storedMovies = JSON.parse(localStorage.getItem('movies') || '[]');
     movies.value = storedMovies;
     displayedMovies.value = storedMovies;
@@ -66,6 +66,7 @@
     movies.value.push(movie);
     localStorage.setItem('movies', JSON.stringify(movies.value));
     displayedMovies.value = movies.value;
+    showAddMovieForm.value = false;
   };
   
   const deleteMovie = (index) => {
@@ -80,4 +81,8 @@
     displayedMovies.value = movies.value;
   };
   </script>
+  
+    <style scoped>
+
+    </style>
   
